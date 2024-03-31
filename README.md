@@ -12,4 +12,4 @@ Certifique-se de ter o Node.js e o Angular CLI instalados globalmente em sua má
 git clone https://github.com/PedroDouglas/front-integrador-pedido.git
 ```
 ## Screenshots
-![Tela do Produto](screenshots/produto.png)
+![Tela do Produto](src/screenshots/produto.png)
