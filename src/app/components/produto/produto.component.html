@@ -1,0 +1,66 @@
+<h1>Produtos</h1><br>
+
+<!-- Lista de Produtos -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Quantidade Disponível</th>
+      <th>Valor Unitário</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <!-- Dados do produto -->
+      <td>{{ produto.id }}</td>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.descricao }}</td>
+      <td>{{ produto.quantidadeDisponivel }}</td>
+      <td>{{ produto.valorUnitario }}</td>
+      <!-- Botões de ação -->
+      <td class="botoes">
+        <input type="number" [(ngModel)]="produto.quantidadeAdicionar" placeholder="Quantidade" size="5">
+        <button class="btn btn-success adicionar" (click)="adicionarQuantidade(produto.id, produto.quantidadeAdicionar)">Adicionar</button>
+        <input type="number" [(ngModel)]="produto.quantidadeRemover" placeholder="Quantidade">
+        <button class="btn btn-danger remover" (click)="removerQuantidade(produto.id, produto.quantidadeRemover)">Remover</button>
+        <button class="btn btn-danger excluir" (click)="excluirProduto(produto.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<select [(ngModel)]="produtoSelecionado">
+  <option *ngFor="let produto of produtos" [ngValue]="produto.id">{{ produto.nome }}</option>
+</select>
+<button class="btn btn-danger excluir" (click)="excluirProduto(produtoSelecionado)">Excluir Produto Selecionado</button>
+<br>
+
+<h2>Cadastrar Produto</h2><br>
+<!-- Tabela de Cadastro de Produto -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Quantidade Disponível</th>
+      <th>Valor Unitário</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- Campos de cadastro de produto -->
+      <td><input type="text" [(ngModel)]="novoProduto.nome"></td>
+      <td><input type="text" [(ngModel)]="novoProduto.descricao"></td>
+      <td><input type="number" [(ngModel)]="novoProduto.quantidadeDisponivel"></td>
+      <td><input type="number" [(ngModel)]="novoProduto.valorUnitario"></td>
+      <!-- Botão de cadastrar produto -->
+      <td>
+        <button class="btn btn-success adicionar" (click)="cadastrarProduto()">Cadastrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
